@@ -1,7 +1,13 @@
+# 核心依赖调整（重点修改PyTorch和ultralytics版本）
 fastapi==0.104.1
 uvicorn==0.24.0
-ultralytics==8.0.200
-torch==2.6.0  # 核心依赖：YOLO模型加载和推理必须
+ultralytics==8.0.196  # 稍旧但更稳定的版本，减少与PyTorch的冲突
 pillow==10.1.0
-numpy==1.26.0  # 关键：升级到支持Python 3.12的版本
+numpy==1.26.0
 python-multipart==0.0.6
+dill==0.3.7
+
+# 关键：使用PyTorch官方CPU版本（适配Linux，避免版本兼容问题）
+torch==2.4.1+cpu
+torchvision==0.19.1+cpu
+torchaudio==2.4.1+cpu
